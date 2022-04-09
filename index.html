@@ -12,7 +12,7 @@
         body {
             -webkit-font-smoothing: antialiased;
             font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
-            background-image: url('bg.jpg');
+            background-image: url('xiaoAndyv(1).jpg');
             font-size: 85%;
             margin: 0;
         }
@@ -39,14 +39,27 @@
         .timer b {
             color: rgb(253, 99, 125);
         }
+        .meetTimer {
+            font-size: 180%;
+            line-height: 1.5;
+            margin: 1em 0;
+        }
+
+        .meetTimer b {
+            color: rgb(253, 99, 125);
+        }
     </style>
 </head>
 
 <body>
     <div class="content">
-        <h2>欢欢，我们已经在一起了</h2>
+        <h2>欢欢，我是肖杨，我们已经在一起了</h2>
         <div class="timer">
             <b id="d"></b> Days <b id="h"></b> Hours <b id="m"></b> Minutes <b id="s"></b> Seconds
+        </div>
+        <h2>欢欢，我是肖杨，我们已经认识了</h2>
+        <div class="meetTimer">
+            <b id="md"></b> Days <b id="mh"></b> Hours <b id="mm"></b> Minutes <b id="ms"></b> Seconds
         </div>
     </div>
 
@@ -74,6 +87,29 @@
         }
         timer();
         setInterval(timer, 1000);
+        function meetTimer() {
+            var start = new Date(2021, 9, 16, 16);
+            var t = new Date() - start;
+            var h = ~~(t / 1000 / 60 / 60 % 24);
+            if (h < 10) {
+                h = "0" + h;
+            }
+            var m = ~~(t / 1000 / 60 % 60);
+            if (m < 10) {
+                m = "0" + m;
+            }
+
+            var s = ~~(t / 1000 % 60);
+            if (s < 10) {
+                s = "0" + s;
+            }
+            document.getElementById('md').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+            document.getElementById('mh').innerHTML = h;
+            document.getElementById('mm').innerHTML = m;
+            document.getElementById('ms').innerHTML = s;
+        }
+        timer();
+        setInterval(meetTimer, 1000);
     </script>
 </body>
 
