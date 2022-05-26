@@ -4,24 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <title>恋爱计时器</title>
     <style>
         body {
             -webkit-font-smoothing: antialiased;
             font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
-            background-image: url('xiaoAndyv(1).jpg');
+            /*background-image: url('xiaoAndyv(1).jpg');*/
             font-size: 85%;
             margin: 0;
         }
-        
+
         h2 {
             font-size: 220%;
             font-weight: 400;
         }
-        
+
         .content {
             position: absolute;
             width: 100%;
@@ -29,16 +29,17 @@
             transform: translate(0, -50%);
             text-align: center;
         }
-        
+
         .timer {
             font-size: 180%;
             line-height: 1.5;
             margin: 1em 0;
         }
-        
+
         .timer b {
             color: rgb(253, 99, 125);
         }
+
         .meetTimer {
             font-size: 180%;
             line-height: 1.5;
@@ -48,69 +49,119 @@
         .meetTimer b {
             color: rgb(253, 99, 125);
         }
+
+
     </style>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
 </head>
 
 <body>
-    <div class="content">
-        <h2>欢欢，我是肖杨，我们已经在一起了</h2>
-        <div class="timer">
-            <b id="d"></b> Days <b id="h"></b> Hours <b id="m"></b> Minutes <b id="s"></b> Seconds
+<div class="container-fluid">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
         </div>
-        <h2>欢欢，我是肖杨，我们已经认识了</h2>
-        <div class="meetTimer">
-            <b id="md"></b> Days <b id="mh"></b> Hours <b id="mm"></b> Minutes <b id="ms"></b> Seconds
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="lovePic(1).jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="xiaoAndyv(1).jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+</div>
 
-    <script>
-        function timer() {
-            var start = new Date(2022, 2, 27, 13);
-            var t = new Date() - start;
-            var h = ~~(t / 1000 / 60 / 60 % 24);
-            if (h < 10) {
-                h = "0" + h;
-            }
-            var m = ~~(t / 1000 / 60 % 60);
-            if (m < 10) {
-                m = "0" + m;
-            }
+<!--<div class="content">-->
+<!--    <h2>欢欢，我是肖杨，我们已经在一起了</h2>-->
+<!--    <div class="timer">-->
+<!--        <b id="d"></b> Days <b id="h"></b> Hours <b id="m"></b> Minutes <b id="s"></b> Seconds-->
+<!--    </div>-->
+<!--    <h2>欢欢，我是肖杨，我们已经认识了</h2>-->
+<!--    <div class="meetTimer">-->
+<!--        <b id="md"></b> Days <b id="mh"></b> Hours <b id="mm"></b> Minutes <b id="ms"></b> Seconds-->
+<!--    </div>-->
+<!--</div>-->
 
-            var s = ~~(t / 1000 % 60);
-            if (s < 10) {
-                s = "0" + s;
-            }
-            document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
-            document.getElementById('h').innerHTML = h;
-            document.getElementById('m').innerHTML = m;
-            document.getElementById('s').innerHTML = s;
+<script>
+    function timer() {
+        var start = new Date(2022, 2, 27, 13);
+        var t = new Date() - start;
+        var h = ~~(t / 1000 / 60 / 60 % 24);
+        if (h < 10) {
+            h = "0" + h;
         }
-        timer();
-        setInterval(timer, 1000);
-        function meetTimer() {
-            var start = new Date(2021, 9, 16, 16);
-            var t = new Date() - start;
-            var h = ~~(t / 1000 / 60 / 60 % 24);
-            if (h < 10) {
-                h = "0" + h;
-            }
-            var m = ~~(t / 1000 / 60 % 60);
-            if (m < 10) {
-                m = "0" + m;
-            }
-
-            var s = ~~(t / 1000 % 60);
-            if (s < 10) {
-                s = "0" + s;
-            }
-            document.getElementById('md').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
-            document.getElementById('mh').innerHTML = h;
-            document.getElementById('mm').innerHTML = m;
-            document.getElementById('ms').innerHTML = s;
+        var m = ~~(t / 1000 / 60 % 60);
+        if (m < 10) {
+            m = "0" + m;
         }
-        timer();
-        setInterval(meetTimer, 1000);
-    </script>
+
+        var s = ~~(t / 1000 % 60);
+        if (s < 10) {
+            s = "0" + s;
+        }
+        document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+        document.getElementById('h').innerHTML = h;
+        document.getElementById('m').innerHTML = m;
+        document.getElementById('s').innerHTML = s;
+    }
+
+    timer();
+    setInterval(timer, 1000);
+
+    function meetTimer() {
+        var start = new Date(2021, 9, 16, 16);
+        var t = new Date() - start;
+        var h = ~~(t / 1000 / 60 / 60 % 24);
+        if (h < 10) {
+            h = "0" + h;
+        }
+        var m = ~~(t / 1000 / 60 % 60);
+        if (m < 10) {
+            m = "0" + m;
+        }
+
+        var s = ~~(t / 1000 % 60);
+        if (s < 10) {
+            s = "0" + s;
+        }
+        document.getElementById('md').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+        document.getElementById('mh').innerHTML = h;
+        document.getElementById('mm').innerHTML = m;
+        document.getElementById('ms').innerHTML = s;
+    }
+
+    timer();
+    setInterval(meetTimer, 1000);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
